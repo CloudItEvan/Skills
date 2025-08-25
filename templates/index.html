@@ -1,0 +1,293 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="relative h-screen flex items-center justify-center text-center text-white overflow-hidden">
+  <!-- Parallax Background -->
+  <div class="parallax-bg absolute inset-0 bg-cover bg-center" aria-hidden="true"></div>
+
+  <!-- Overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- Hero Content -->
+  <div class="relative z-10 max-w-3xl px-6">
+    <h1 class="text-5xl md:text-6xl font-extrabold mb-4 reveal">Swap Skills. Grow Together.</h1>
+    <p class="text-lg md:text-xl text-gray-200 mb-8 reveal">
+      Connect with learners and experts worldwide. Trade your skills and learn new ones without limits.
+    </p>
+    <div class="flex justify-center gap-4 reveal">
+      <a href="/register" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
+        Join Free
+      </a>
+      <a href="/explore" class="px-8 py-3 border border-white hover:bg-white hover:text-gray-900 rounded-lg font-semibold transition">
+        Explore Skills
+      </a>
+    </div>
+  </div>
+
+  <!-- Optional Floating Icons -->
+  <div class="absolute top-10 left-10 animate-bounce text-white/40 text-4xl">🛠️</div>
+  <div class="absolute bottom-20 right-16 animate-bounce text-white/40 text-3xl">🎨</div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="max-w-6xl mx-auto px-4 py-20">
+  <h2 class="text-3xl font-bold mb-8 text-center reveal" data-delay="0">Why Skill Swap Market?</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+    
+    <!-- Card 1 -->
+    <div class="p-6 bg-gradient-to-br from-pink-50 to-pink-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 reveal" data-delay="0">
+      <h3 class="font-semibold mb-2 text-pink-800">Trade Skills</h3>
+      <p class="text-gray-700">Offer what you know and get access to new skills from others.</p>
+    </div>
+    
+    <!-- Card 2 -->
+    <div class="p-6 bg-gradient-to-br from-indigo-50 to-indigo-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 reveal" data-delay="150">
+      <h3 class="font-semibold mb-2 text-indigo-800">Build Connections</h3>
+      <p class="text-gray-700">Meet experts and learners who share your interests.</p>
+    </div>
+    
+    <!-- Card 3 -->
+    <div class="p-6 bg-gradient-to-br from-green-50 to-green-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 reveal" data-delay="300">
+      <h3 class="font-semibold mb-2 text-green-800">Grow Together</h3>
+      <p class="text-gray-700">Learn, teach, and expand your skillset in a collaborative way.</p>
+    </div>
+    
+  </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="max-w-6xl mx-auto px-4 py-20 bg-gray-50">
+  <h2 class="text-3xl font-bold mb-12 text-center reveal">Our Services</h2>
+  <div class="grid md:grid-cols-3 gap-8">
+  <!-- Card 1 -->
+  <div class="p-8 bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 reveal" data-delay="0">
+    <div class="text-blue-600 text-5xl mb-4 animate-bounce">🛠️</div>
+    <h3 class="font-semibold mb-2 text-xl text-blue-800">Skill Swapping</h3>
+    <p class="text-gray-700">Exchange your skills with others easily and learn new ones.</p>
+  </div>
+
+  <!-- Card 2 -->
+  <div class="p-8 bg-gradient-to-br from-teal-50 to-teal-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 reveal" data-delay="150">
+    <div class="text-teal-500 text-5xl mb-4 animate-bounce">🌐</div>
+    <h3 class="font-semibold mb-2 text-xl text-teal-800">Global Connections</h3>
+    <p class="text-gray-700">Connect with learners and experts around the world.</p>
+  </div>
+
+  <!-- Card 3 -->
+  <div class="p-8 bg-gradient-to-br from-purple-50 to-purple-100 rounded-xl shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-500 reveal" data-delay="300">
+    <div class="text-purple-500 text-5xl mb-4 animate-bounce">📈</div>
+    <h3 class="font-semibold mb-2 text-xl text-purple-800">Skill Growth</h3>
+    <p class="text-gray-700">Track your learning and improve your skillset through swaps.</p>
+  </div>
+</div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="bg-gray-50 py-20">
+  <h2 class="text-3xl font-bold mb-12 text-center reveal" data-delay="0">What Our Users Say</h2>
+
+  <div class="relative max-w-4xl mx-auto overflow-hidden group">
+    <!-- Slider Container -->
+    <div id="testimonialSlider" class="flex transition-transform duration-700 ease-in-out">
+      <!-- Slide 1 -->
+      <div class="min-w-full flex-shrink-0 flex flex-col items-center px-6 reveal" data-delay="0">
+        <img src="https://i.pravatar.cc/120?img=1" alt="User 1" class="w-24 h-24 rounded-full shadow-lg mb-4">
+        <blockquote class="italic text-gray-700 text-center max-w-2xl">
+          “Skill Swap Market helped me find a coding mentor while I taught design. A win-win experience!”
+        </blockquote>
+        <p class="mt-4 font-semibold text-gray-900">Sarah Johnson</p>
+        <p class="text-sm text-gray-500">UI/UX Designer</p>
+      </div>
+      <!-- Slide 2 -->
+      <div class="min-w-full flex-shrink-0 flex flex-col items-center px-6 reveal" data-delay="150">
+        <img src="https://i.pravatar.cc/120?img=2" alt="User 2" class="w-24 h-24 rounded-full shadow-lg mb-4">
+        <blockquote class="italic text-gray-700 text-center max-w-2xl">
+          “I swapped my guitar lessons for cooking classes. Learned something new every week thanks to this platform.”
+        </blockquote>
+        <p class="mt-4 font-semibold text-gray-900">Michael Lee</p>
+        <p class="text-sm text-gray-500">Musician</p>
+      </div>
+      <!-- Slide 3 -->
+      <div class="min-w-full flex-shrink-0 flex flex-col items-center px-6 reveal" data-delay="300">
+        <img src="https://i.pravatar.cc/120?img=3" alt="User 3" class="w-24 h-24 rounded-full shadow-lg mb-4">
+        <blockquote class="italic text-gray-700 text-center max-w-2xl">
+          “The community is so supportive. I gained both new skills and new friends through swaps.”
+        </blockquote>
+        <p class="mt-4 font-semibold text-gray-900">Amina Patel</p>
+        <p class="text-sm text-gray-500">Entrepreneur</p>
+      </div>
+    </div>
+
+    <!-- Modern Controls -->
+    <button id="prevBtn"
+      class="flex items-center justify-center absolute z-10 top-1/2 left-4 -translate-y-1/2 bg-white bg-opacity-90 p-3 rounded-full shadow-lg hover:bg-gray-100 transition opacity-0 group-hover:opacity-100 focus:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+      </svg>
+    </button>
+    <button id="nextBtn"
+      class="flex items-center justify-center absolute z-10 top-1/2 right-4 -translate-y-1/2 bg-white bg-opacity-90 p-3 rounded-full shadow-lg hover:bg-gray-100 transition opacity-0 group-hover:opacity-100 focus:opacity-100">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-700" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+      </svg>
+    </button>
+  </div>
+
+  <!-- Pagination Dots -->
+  <div id="testimonialDots" class="flex justify-center mt-6 space-x-2">
+    <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+    <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+    <button class="w-3 h-3 rounded-full bg-gray-300"></button>
+  </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="relative max-w-6xl mx-auto px-4 py-24">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    
+    <!-- Left: Heading + Text -->
+    <div class="space-y-6 reveal">
+      <h2 class="text-4xl font-extrabold text-gray-900 leading-tight">
+        Let’s <span class="text-indigo-600">Connect</span>
+      </h2>
+      <p class="text-lg text-gray-600">
+        Have a project, idea, or just want to say hi? Fill out the form and we’ll get back to you soon.
+      </p>
+      <ul class="space-y-3 text-gray-700">
+        <li class="flex items-center space-x-3">
+          <span class="w-10 h-10 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-xl shadow">
+            📧
+          </span>
+          <span>support@skillswap.com</span>
+        </li>
+        <li class="flex items-center space-x-3">
+          <span class="w-10 h-10 flex items-center justify-center bg-indigo-100 text-indigo-600 rounded-xl shadow">
+            📞
+          </span>
+          <span>+1 875 43210</span>
+        </li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact Form -->
+    <form class="bg-white p-8 rounded-2xl shadow-2xl space-y-6 reveal" data-delay="200">
+      
+      <!-- Name -->
+      <div class="relative">
+        <input type="text" id="name" name="name" required
+          class="peer w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-indigo-500 focus:outline-none py-3"/>
+        <label for="name"
+          class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-indigo-600">
+          Your Name
+        </label>
+      </div>
+
+      <!-- Email -->
+      <div class="relative">
+        <input type="email" id="email" name="email" required
+          class="peer w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-indigo-500 focus:outline-none py-3"/>
+        <label for="email"
+          class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-indigo-600">
+          Your Email
+        </label>
+      </div>
+
+      <!-- Message -->
+      <div class="relative">
+        <textarea id="message" name="message" rows="4" required
+          class="peer w-full border-b-2 border-gray-300 text-gray-900 placeholder-transparent focus:border-indigo-500 focus:outline-none py-3"></textarea>
+        <label for="message"
+          class="absolute left-0 -top-3.5 text-gray-600 text-sm transition-all peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base peer-placeholder-shown:top-3 peer-focus:-top-3.5 peer-focus:text-sm peer-focus:text-indigo-600">
+          Your Message
+        </label>
+      </div>
+
+      <!-- Button -->
+      <button type="submit"
+        class="w-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white font-semibold py-3 rounded-xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition duration-300">
+        Send Message 🚀
+      </button>
+    </form>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-gray-300 mt-20">
+  <div class="max-w-6xl mx-auto px-4 py-12 grid md:grid-cols-3 gap-8">
+    
+    <!-- Logo + About -->
+    <div>
+      <h3 class="text-2xl font-bold text-white">Skill Swap Market</h3>
+      <p class="mt-4 text-gray-400">
+        A place to trade skills, build connections, and grow together.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div>
+      <h4 class="text-lg font-semibold text-white mb-4">Quick Links</h4>
+      <ul class="space-y-2">
+        <li><a href="#about" class="hover:text-indigo-400 transition">About</a></li>
+        <li><a href="#services" class="hover:text-indigo-400 transition">Services</a></li>
+        <li><a href="#testimonials" class="hover:text-indigo-400 transition">Testimonials</a></li>
+        <li><a href="#contact" class="hover:text-indigo-400 transition">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Socials -->
+    <div>
+      <h4 class="text-lg font-semibold text-white mb-4">Follow Us</h4>
+      <div class="flex space-x-4">
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-indigo-600 transition">
+          🌐
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-indigo-600 transition">
+          🐦
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-indigo-600 transition">
+          📘
+        </a>
+        <a href="#" class="w-10 h-10 flex items-center justify-center bg-gray-800 rounded-full hover:bg-indigo-600 transition">
+          📸
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom -->
+  <div class="border-t border-gray-800 mt-8 py-6 text-center text-gray-500 text-sm">
+    © 2025 Skill Swap Market. All rights reserved.
+  </div>
+</footer>
+
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn"
+  class="opacity-0 pointer-events-none fixed bottom-6 right-6 w-11 h-11 flex items-center justify-center 
+         bg-gray-800 text-white rounded-full shadow-md hover:bg-indigo-600 
+         transition duration-300 ease-in-out">
+  <!-- Up Arrow Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M5 15l7-7 7 7" />
+  </svg>
+</button>
+
+<script>
+  const scrollBtn = document.getElementById("scrollToTopBtn");
+
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollBtn.classList.remove("opacity-0", "pointer-events-none");
+      scrollBtn.classList.add("opacity-100");
+    } else {
+      scrollBtn.classList.remove("opacity-100");
+      scrollBtn.classList.add("opacity-0", "pointer-events-none");
+    }
+  });
+
+  scrollBtn.addEventListener("click", () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+</script>
+
+{% endblock %}

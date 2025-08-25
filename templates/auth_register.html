@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="max-w-sm mx-auto px-4 py-12">
+<h2 class="text-2xl font-bold mb-6">Create your account</h2>
+<form method="post" class="space-y-4">
+<input name="name" required placeholder="Full name" class="w-full p-3 border rounded">
+<input name="email" type="email" required placeholder="Email" class="w-full p-3 border rounded">
+<input name="password" type="password" minlength="6" required placeholder="Password" class="w-full p-3 border rounded">
+<button class="w-full px-4 py-2 bg-black text-white rounded">Sign up</button>
+</form>
+<p class="mt-4 text-sm text-gray-600">Already have an account? <a class="text-blue-600" href="/login">Log in</a></p>
+</div>
+{% endblock %}

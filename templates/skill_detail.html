@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-md mt-6">
+    <h1 class="text-3xl font-bold mb-4">{{ skill.name }}</h1>
+    <p class="mb-2"><strong>Category:</strong> {{ skill.category or 'N/A' }}</p>
+    <p class="mb-2"><strong>Difficulty:</strong> {{ skill.difficulty or 'N/A' }}</p>
+    <p class="mb-4"><strong>Location:</strong> {{ skill.location or 'N/A' }}</p>
+    <p class="mb-6">{{ skill.description }}</p>
+
+    <h2 class="text-xl font-semibold mb-2">Owners:</h2>
+    <ul class="mb-6">
+        {% if owners %}
+            {% for owner in owners %}
+                <li class="mb-1">
+                    <a href="{{ url_for('user_profile', user_id=owner.id) }}" class="text-blue-600 hover:underline">
+                        {{ owner.username }}
+                    </a>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No owner listed</li>
+        {% endif %}
+    </ul>
+
+    {% if other_skills %}
+    <h2 class="text-xl font-semibold mb-2">Other skills by owner(s):</h2>
+    {% for owner, skills in other_skills.items() %}
+        <p class="font-semibold">{{ owner.username }}:</p>
+        <ul class="mb-4 ml-4 list-disc">
+            {% for s in skills %}
+                <li><a href="{{ url_for('skill_detail', skill_id=s.id) }}" class="text-blue-500 hover:underline">{{ s.name }}</a></li>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+    {% endif %}
+</div>
+{% endblock %}

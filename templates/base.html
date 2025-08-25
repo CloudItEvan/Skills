@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Skill Swap Market</title>
+  <!-- Tailwind CDN (stable) -->
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+</head>
+<body class="bg-gray-50 text-gray-900">
+  <nav class="bg-white/80 backdrop-blur shadow-sm sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+      <a href="/" class="font-extrabold text-xl">Skill Swap 🛠</a>
+      <div class="space-x-4 text-sm md:text-base">
+        <a href="/explore" class="hover:underline">Explore</a>
+        <a href="#about" class="hover:underline">About</a>
+        <a href="#services" class="hover:underline">Services</a>
+        <a href="#testimonials" class="hover:underline">Testimonials</a>
+        {% if current_user.is_authenticated %}
+          <a href="/dashboard" class="hover:underline">Dashboard</a>
+          <a href="/profile" class="hover:underline">Profile</a>
+          <a href="/logout" class="px-3 py-1 bg-gray-900 text-white rounded">Logout</a>
+        {% else %}
+          <a href="/login" class="hover:underline">Login</a>
+          <a href="/register" class="px-3 py-1 bg-gray-900 text-white rounded">Join Free</a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+
+  <main class="min-h-screen">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="max-w-3xl mx-auto mt-4">
+          {% for category, msg in messages %}
+          <div class="p-3 rounded mb-2 {{ 'bg-green-100' if category=='success' else 'bg-red-100' }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+    {% block content %}{% endblock %}
+  </main>
+
+  <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>

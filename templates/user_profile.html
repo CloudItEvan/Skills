@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-4xl mx-auto p-6 bg-white rounded-xl shadow-md mt-6">
+    <h1 class="text-3xl font-bold mb-4">{{ user.username }}</h1>
+    {% if user.bio %}
+        <p class="mb-4">{{ user.bio }}</p>
+    {% endif %}
+
+    <h2 class="text-xl font-semibold mb-2">Skills:</h2>
+    <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {% if skills %}
+            {% for skill in skills %}
+                <li class="p-4 bg-gray-100 rounded-lg hover:bg-gray-200 transition">
+                    <a href="{{ url_for('skill_detail', skill_id=skill.id) }}" class="font-semibold text-blue-600 hover:underline">{{ skill.name }}</a>
+                    <p class="text-sm mt-1">{{ skill.description[:100] }}{% if skill.description|length > 100 %}...{% endif %}</p>
+                </li>
+            {% endfor %}
+        {% else %}
+            <li>No skills listed</li>
+        {% endif %}
+    </ul>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+<div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  {% if skills %}
+    {% for s in skills %}
+    <div class="bg-white rounded-2xl shadow hover:shadow-lg hover:scale-[1.02] transition-transform p-6 flex flex-col justify-between">
+      <div>
+        <div class="h-12 w-12 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-full mb-4">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M12 6v6h4m6 6a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ s.name }}</h3>
+        <p class="text-gray-600 text-sm line-clamp-3">
+          {{ s.description or "Learn and exchange this valuable skill with others!" }}
+        </p>
+      </div>
+      <div class="mt-4">
+        <a href="{{ url_for('register') }}" 
+           class="inline-block bg-indigo-600 text-white text-sm font-medium 
+                  px-4 py-2 rounded-full hover:bg-indigo-700 transition">
+          Get this skill →
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <div class="col-span-full text-center py-12 text-gray-500">
+      <p class="text-lg">No skills found for your search.</p>
+      <p class="text-sm mt-2">Try adjusting filters or searching again!</p>
+    </div>
+  {% endif %}
+</div>

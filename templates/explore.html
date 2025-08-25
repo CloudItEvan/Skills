@@ -1,0 +1,150 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="max-w-7xl mx-auto px-4 py-12 grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+  <!-- Sidebar + Search wrapped inside ONE form -->
+  <form id="filter-form" method="get" action="{{ url_for('explore') }}" 
+        class="lg:col-span-4 grid grid-cols-1 lg:grid-cols-4 gap-8">
+
+    <!-- Sidebar Filters -->
+    <aside class="bg-white rounded-2xl shadow p-6 h-fit">
+      <h3 class="text-lg font-semibold mb-4 text-gray-800">Filters</h3>
+
+      <!-- Category -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium mb-2 text-gray-600">Category</label>
+        <select name="category"
+                onchange="this.form.submit()"
+                class="w-full p-2 border rounded-lg">
+          <option value="">All</option>
+          <option value="tech" {{ 'selected' if request.args.get('category') == 'tech' else '' }}>Tech</option>
+          <option value="music" {{ 'selected' if request.args.get('category') == 'music' else '' }}>Music</option>
+          <option value="language" {{ 'selected' if request.args.get('category') == 'language' else '' }}>Language</option>
+          <option value="art" {{ 'selected' if request.args.get('category') == 'art' else '' }}>Art</option>
+        </select>
+      </div>
+
+      <!-- Difficulty -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium mb-2 text-gray-600">Difficulty</label>
+        <select name="difficulty"
+                onchange="this.form.submit()"
+                class="w-full p-2 border rounded-lg">
+          <option value="">Any</option>
+          <option value="beginner" {{ 'selected' if request.args.get('difficulty') == 'beginner' else '' }}>Beginner</option>
+          <option value="intermediate" {{ 'selected' if request.args.get('difficulty') == 'intermediate' else '' }}>Intermediate</option>
+          <option value="advanced" {{ 'selected' if request.args.get('difficulty') == 'advanced' else '' }}>Advanced</option>
+        </select>
+      </div>
+
+      <!-- Location -->
+      <div>
+        <label class="block text-sm font-medium mb-2 text-gray-600">Location</label>
+        <input type="text"
+               name="location"
+               value="{{ request.args.get('location', '') }}"
+               placeholder="e.g. New York"
+               class="w-full p-2 border rounded-lg"
+               onchange="this.form.submit()" />
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <div class="lg:col-span-3">
+
+      <!-- Search -->
+      <div class="relative mb-10">
+        <span class="absolute inset-y-0 left-0 flex items-center pl-3 text-gray-400">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" 
+               viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 1110.5 3a7.5 7.5 0 016.15 13.65z" />
+          </svg>
+        </span>
+        <input 
+          type="text" 
+          name="q" 
+          value="{{ request.args.get('q', '') }}" 
+          placeholder="Search skills (e.g., Python, Guitar)" 
+          class="w-full pl-10 pr-4 py-3 border rounded-full shadow-sm 
+                 focus:outline-none focus:ring-2 focus:ring-indigo-400"
+        />
+      </div>
+
+      <!-- Personalized Matches -->
+      {% if current_user.is_authenticated and matches %}
+      <h2 class="text-2xl font-bold mb-6 text-indigo-700">Matches for You</h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        {% for m in matches %}
+        <div class="bg-indigo-50 rounded-2xl shadow hover:shadow-md transition p-6">
+          <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ m.skill.name }}</h3>
+          <p class="text-gray-600 text-sm line-clamp-3">
+            {{ m.skill.description or "No description available." }}
+          </p>
+          <p class="mt-2 text-sm text-indigo-600">
+            Offered by: {{ m.user.username }}
+          </p>
+          {% if m.user.id != current_user.id %}
+          <a href="{{ url_for('request_swap', user_id=m.user.id, skill_id=m.skill.id) }}" 
+             class="inline-block mt-4 bg-indigo-600 text-white text-sm font-medium 
+                    px-4 py-2 rounded-full hover:bg-indigo-700 transition">
+            Request Swap →
+          </a>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      <!-- All Skills -->
+      <h2 class="text-2xl font-bold mb-6 text-gray-800">Explore Skills</h2>
+      <div id="results" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {% if skills %}
+          {% for s in skills %}
+          <div class="bg-white rounded-2xl shadow hover:shadow-lg hover:scale-[1.02] transition-transform p-6 flex flex-col justify-between">
+            <div>
+              <div class="h-12 w-12 bg-indigo-100 text-indigo-600 flex items-center justify-center rounded-full mb-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M12 6v6h4m6 6a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+              </div>
+              <h3 class="text-lg font-semibold text-gray-800 mb-2">{{ s.name }}</h3>
+              <p class="text-gray-600 text-sm line-clamp-3">
+                {{ s.description or "Learn and exchange this valuable skill with others!" }}
+              </p>
+            </div>
+            <div class="mt-4">
+              {% if not current_user.is_authenticated %}
+                <!-- Guest → Join to swap -->
+                <a href="{{ url_for('register') }}" 
+                   class="inline-block bg-indigo-600 text-white text-sm font-medium 
+                        px-4 py-2 rounded-full hover:bg-indigo-700 transition">
+                  Join to swap →
+                </a>
+              {% else %}
+                {% if s.users and s.users[0].user %}
+                  <a href="{{ url_for('profile', user_id=s.users[0].user.id) }}" 
+                     class="inline-block bg-gray-100 text-gray-700 text-sm font-medium 
+                            px-4 py-2 rounded-full hover:bg-gray-200 transition">
+                    View User →
+                  </a>
+                {% else %}
+                  <p class="text-sm text-gray-400 italic">No owner listed.</p>
+                {% endif %}
+              {% endif %}
+            </div>
+          </div>
+          {% endfor %}
+        {% else %}
+          <div class="col-span-full text-center py-12 text-gray-500">
+            <p class="text-lg">No skills found for your search.</p>
+            <p class="text-sm mt-2">Try adjusting filters or searching again!</p>
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </form>
+</div>
+{% endblock %}
