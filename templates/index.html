@@ -16,10 +16,17 @@
       Connect with learners and experts worldwide. Trade your skills and learn new ones without limits.
     </p>
     <div class="flex justify-center gap-4 reveal">
-      <a href="/register" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
-        Join Free
-      </a>
-      <a href="/explore" class="px-8 py-3 border border-white hover:bg-white hover:text-gray-900 rounded-lg font-semibold transition">
+      {% if not current_user.is_authenticated %}
+        <a href="{{ url_for('register') }}" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
+          Join Free
+        </a>
+      {% else %}
+        <a href="{{ url_for('dashboard') }}" class="px-8 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold transition">
+          Go to Dashboard
+        </a>
+      {% endif %}
+    
+      <a href="{{ url_for('explore') }}" class="px-8 py-3 border border-white hover:bg-white hover:text-gray-900 rounded-lg font-semibold transition">
         Explore Skills
       </a>
     </div>
